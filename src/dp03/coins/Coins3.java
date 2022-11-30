@@ -1,8 +1,6 @@
 package dp03.coins;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 class Coins3 {
     public static void main(String[] args) {
