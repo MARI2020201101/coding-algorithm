@@ -1,5 +1,8 @@
 package ds.binarytree;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 class Demo {
     public static void main(String[] args) {
         NodeTree nodeTree = new NodeTree();
@@ -13,17 +16,52 @@ class Demo {
         nodeTree.putNode(8);
         String serialize = nodeTree.serialize();
         System.out.println(serialize);
+
+        Node root = nodeTree.deserialize(serialize);
+
+        String serialize2 = nodeTree.serialize(root, new StringBuffer());
+        System.out.println(serialize2);
     }
 }
 class NodeTree {
     Node root;
+
+    public Node deserialize(String str){
+        String[] strs = str.split(",");
+        LinkedList<String> nodes = new LinkedList<>();
+        for(String s : strs){
+            nodes.addLast(s);
+        }
+
+        return deserialize(nodes);
+    }
+
+    private Node deserialize(LinkedList<String> nodes) {
+        if(nodes.isEmpty()) return null;
+        String node = nodes.removeFirst();
+        if(node.equals("#")) return null;
+        root = new Node(Integer.parseInt(node));
+        root.left = deserialize(root, nodes);
+        root.right = deserialize(root, nodes);
+
+        return root;
+    }
+
+    private Node deserialize(Node root, LinkedList<String> nodes) {
+        String node = nodes.removeFirst();
+        if(node.equals("#")) return null;
+        root = new Node(Integer.parseInt(node));
+        root.left = deserialize(root, nodes);
+        root.right = deserialize(root, nodes);
+        return root;
+    }
 
     public String serialize(){
         StringBuffer sb = new StringBuffer();
         return serialize(root, sb);
     }
 
-    private String serialize(Node root, StringBuffer sb) {
+    public String serialize(Node root, StringBuffer sb) {
         if(root==null){
             sb.append("#");
             sb.append(",");
