@@ -1,6 +1,5 @@
 package ds.binarytree;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 
 class Demo {
