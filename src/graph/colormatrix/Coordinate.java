@@ -1,8 +1,5 @@
 package graph.colormatrix;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Coordinate {
     int x;
     int y;
