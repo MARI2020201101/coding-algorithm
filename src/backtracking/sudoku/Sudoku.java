@@ -33,7 +33,7 @@ class Sudoku {
             sudoku[i][j] = k;
             sudoku(sudoku, i, j+1);
 
-//            sudoku[i][j] = 0;
+            sudoku[i][j] = 0;
     }
     }
 
