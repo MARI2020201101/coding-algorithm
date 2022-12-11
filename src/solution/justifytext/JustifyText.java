@@ -33,18 +33,16 @@ class JustifyText {
                 curLineLength += words.get(i).length();
             }
 
-            if(numWordsCurrLine > 0){
-                StringBuffer sb = new StringBuffer(
-                        joinALineWithBlank(words, currLineStart, words.size()-1, numWordsCurrLine-1)
-                );
-                for (int j = 0; j < len - curLineLength - (numWordsCurrLine-1); j++) {
-                    sb.append(" ");
-                }
-                result.add(sb.toString());
+        }if(numWordsCurrLine > 0){
+            StringBuffer sb = new StringBuffer(
+                    joinALineWithBlank(words, currLineStart, words.size()-1, numWordsCurrLine-1)
+            );
+            for (int i = 0; i < len - curLineLength - (numWordsCurrLine-1); i++) {
+                sb.append(" ");
             }
-            return result;
-
+            result.add(sb.toString());
         }
+        return result;
     }
 
     private static String joinALineWithBlank(List<String> words, int start, int end, int numBlanks) {
