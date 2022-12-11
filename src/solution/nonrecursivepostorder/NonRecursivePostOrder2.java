@@ -28,8 +28,7 @@ public class NonRecursivePostOrder2 {
         list.forEach(s-> System.out.print(s + " "));
     }
     static List<Integer> nonRecursivePostOrder(TreeNode  node){
-        List<Integer> list = __nonRecursivePostOrder(node);
-        return list;
+        return __nonRecursivePostOrder(node);
     }
     static List<Integer> __nonRecursivePostOrder(TreeNode node){
         Deque<TreeNode> stack = new LinkedList<>();
