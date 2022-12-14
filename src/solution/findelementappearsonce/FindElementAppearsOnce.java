@@ -29,9 +29,7 @@ class FindElementAppearsOnce {
         System.out.println(Arrays.toString(count));
         int result = 0;
         for (int i = 0; i < count.length; i++) {
-            System.out.println(String.format("((count[i] 3) << i) = %d", ((count[i] % 3) << i)));
             result |= ((count[i] % 3) << i);
-            System.out.println("result = "+ result);
         }
         return result;
     }
