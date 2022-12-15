@@ -1,7 +1,5 @@
 package ds.linkedlist.reverse;
 
-
-
 class Reverse {
     public static void main(String[] args) {
         Node head = new Node(1);
@@ -41,7 +39,7 @@ class Node {
     public String toString() {
         return "Node{" +
                 "data=" + data +
-                ", next=" + next +
+//                ", next=" + next +
                 '}';
     }
 }
