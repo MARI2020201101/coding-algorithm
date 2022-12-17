@@ -15,4 +15,17 @@ class Node {
         this.data = data;
         this.next = next;
     }
+    public Node addNode(Integer data){
+        Node node = new Node(data);
+        this.next = node;
+        return node;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                ", next=" + next +
+                '}';
+    }
 }
