@@ -28,7 +28,7 @@ class Subset2 {
             solution.add(item);
             subset(n+1, k, set, solution, solutions);
             solution.remove(solution.size()-1);
-//            subset(n+1, k, set, solution, solutions);
+//            subset(n+1, k, set, basis.solution, solutions);
         }
     }
 }

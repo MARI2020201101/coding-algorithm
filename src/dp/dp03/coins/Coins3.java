@@ -25,7 +25,7 @@ class Coins3 {
 
         }
         System.out.println("dp : "+Arrays.toString(dp));
-        System.out.println("solution : "+Arrays.toString(solution));
+        System.out.println("basis.solution : "+Arrays.toString(solution));
         return dp[dp.length-1];
     }
     static void printMinCoins(int money, int[] solution){
