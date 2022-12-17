@@ -36,7 +36,7 @@ class AddLists {
         int sum = (node1.data + node2.data + partialSumFrom.carry) % 10;
         Node nextSum = new Node(sum);
         nextSum.next = partialSumFrom.sum;
-        int carry = (node1.data + node2.data) >= 10 ? 1:0;
+        int carry = (node1.data + node2.data + partialSumFrom.carry) / 10;
         return new PartialSum(nextSum, carry);
     }
 
