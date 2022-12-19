@@ -1,6 +1,6 @@
 package xsolution.treeandgraph.findancestor;
 
-class FindAncestor {
+class FindAncestor2 {
     public static void main(String[] args) {
         Node root = new Node(1);
         Node node2 = new Node(2);
@@ -47,24 +47,24 @@ class FindAncestor {
         node14.parent = node11;
         node15.parent = node11;
 
-        Node lca = find(node10, node15);
+        Node lca = find(root, node10, node15);
         System.out.println(lca);
 
     }
+    static Node find(Node root, Node node1, Node node2){
+        if(root == null) return root;
+        else if(root == node1 && root == node2) return root;
 
-    static Node find(Node node1, Node node2) {
-        Node parent1 = node1.parent;
-        while (parent1 != null) {
-            Node sibling = node1 == parent1.left ? parent1.right : parent1.left;
-            if (covers(sibling, node2)) return parent1;
-            parent1 = parent1.parent;
+        Node left = find(root.left, node1, node2);
+        Node right = find(root.right, node1, node2);
+
+        if(left!=null && right!=null){
+            return root;
+        }else if(root == node1 || root == node2){
+            return root;
+        }else if(left!=null || right!=null){
+            return left == null ? right : left;
         }
-        return parent1;
-    }
-
-    static boolean covers(Node sibling, Node target) {
-        if (sibling == null) return false;
-        if (sibling == target) return true;
-        return covers(sibling.left, target) || covers(sibling.right, target);
+        return null;
     }
 }
