@@ -1,6 +1,6 @@
 package xsolution.treeandgraph.findancestor;
 
-class FindAncestor2 {
+class FindAncestor3 {
     public static void main(String[] args) {
         Node root = new Node(1);
         Node node2 = new Node(2);
@@ -54,19 +54,36 @@ class FindAncestor2 {
 
     }
     static Node find(Node root, Node node1, Node node2){
-        if(root == null) return root;
-        else if(root == node1 && root == node2) return root;
+        return __find(root,node1,node2).node;
+    }
+    static Result __find(Node root, Node node1, Node node2){
+        if(root == null) return new Result(null, false);
+        else if(root == node1 && root == node2) return new Result(root, true);
 
-        Node left = find(root.left, node1, node2);
-        Node right = find(root.right, node1, node2);
+        Result left = __find(root.left, node1, node2);
+        Result right = __find(root.right, node1, node2);
 
-        if(left!=null && right!=null){
-            return root;
+        if(left.node!=null && right.node!=null && left.isCommon && right.isCommon){
+            return new Result(root, true);
         }else if(root == node1 || root == node2){
-            return root;
-        }else if(left!=null || right!=null){
-            return left == null ? right : left;
+            return new Result(root, true);
+        }else if(left.node!=null || right.node!=null){
+            Node node = left.node==null? right.node : left.node;
+            boolean nextCommon = left.node==null? right.isCommon : left.isCommon;
+            return new Result(node, nextCommon);
         }
-        return null;
+        return new Result(null, false);
+    }
+}
+class Result {
+    Node node;
+    boolean isCommon;
+
+    public Result() {
+    }
+
+    public Result(Node node, boolean isCommon) {
+        this.node = node;
+        this.isCommon = isCommon;
     }
 }
