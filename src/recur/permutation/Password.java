@@ -12,7 +12,7 @@ class Password {
         }
         String s = strs[i];
         String next = str + s;
-        password(n, strs, str, i+1);
+//        password(n, strs, str, i+1);
         password(n, strs, next, i+1);
     }
 }
