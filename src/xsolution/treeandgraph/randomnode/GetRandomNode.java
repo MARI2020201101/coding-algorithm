@@ -18,12 +18,12 @@ class GetRandomNode {
         System.out.println(getRandomNode(root));
     }
     static Node getRandomNode(Node root){
-        System.out.println(root);
+        if(root.size == 0) return root;
         Random random = new Random();
         int idx = random.nextInt(root.size);
         if(idx == root.size){
             return root;
-        }else if(idx < root.size){
+        }else if(idx <= root.size/2){
             return getRandomNode(root.left);
         }else{
             return getRandomNode(root.right);
