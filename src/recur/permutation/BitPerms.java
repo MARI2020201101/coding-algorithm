@@ -5,7 +5,10 @@ import java.util.List;
 
 class BitPerms {
     public static void main(String[] args) {
-        List<List<Integer>> lists = create(5);
+        int[] arr = {1,2,3,4,5};
+//        List<List<Integer>> lists = create(arr.length);
+//        lists.forEach(System.out::println);
+        List<List<Integer>> lists = create(arr, arr.length);
         lists.forEach(System.out::println);
     }
     static List<List<Integer>> create(int n){
@@ -24,5 +27,21 @@ class BitPerms {
             lists.add(list);
         }
         return lists;
+    }
+
+    static List<List<Integer>> create(int[] arr, int n){
+        List<List<Integer>> lists = create(n);
+        List<List<Integer>> results = new ArrayList<>();
+        for(List<Integer> list : lists){
+            List<Integer> result = new ArrayList<>();
+            for (int i = 0; i < arr.length; i++){
+                if(list.get(i)==1){
+                    result.add(arr[i]);
+                }
+            }
+            results.add(result);
+        }
+
+        return results;
     }
 }
