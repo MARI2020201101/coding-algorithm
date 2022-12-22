@@ -1,4 +1,4 @@
-package xsolution.treeandgraph;
+package xsolution.bitoperation;
 
 import java.util.ArrayList;
 import java.util.List;
