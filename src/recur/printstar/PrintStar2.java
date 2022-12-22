@@ -12,11 +12,12 @@ class PrintStar2 {
             }
         }
         __printStar(arr, 0, 0,n);
+        __print(arr);
     }
     static void __printStar(char[][] arr, int start, int end, int n){
         if(n == 1){
             arr[start][end] = '*';
-            __print(arr);
+
             return;
         }
 
