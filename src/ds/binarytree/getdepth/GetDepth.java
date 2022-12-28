@@ -21,7 +21,7 @@ class GetDepth {
             return -1;
         }
         int leftDepth = getDepth(root.left) + 1;
-        int rightDepth = getDepth(root.right) +1;
+        int rightDepth = getDepth(root.right) + 1;
 
         return Math.max(leftDepth, rightDepth);
     }
@@ -41,5 +41,14 @@ class Node{
     public Node(Node left, Node right) {
         this.left = left;
         this.right = right;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
     }
 }
