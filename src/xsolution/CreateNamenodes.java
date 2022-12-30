@@ -3,6 +3,31 @@ package xsolution;
 import java.util.*;
 
 class CreateNamenodes {
+    public static void main(String[] args) {
+        Map<String , Integer> map = new HashMap<>();
+        map.put("John", 10);
+        map.put("Jon", 3);
+        map.put("Davis", 2);
+        map.put("Kari", 3);
+        map.put("Johnny",11);
+        map.put("Carlton", 8);
+        map.put("Carleton", 2);
+        map.put("Jonathan", 9);
+        map.put("Carrie", 5);
+
+        String[][] equipNames = {
+                {"Jonathan","John"},
+                {"Jon","Johnny"},
+                {"Johnny","John"},
+                {"Kari","Cari"},
+                {"Carleton","Carlton"},
+        };
+        Graph graph = new Graph();
+        graph.initNodes(map);
+        graph.initEdges(equipNames);
+        Map<String, NameNode> integratedNodeMap = graph.updateNodeMap();
+        integratedNodeMap.forEach((k,v)-> System.out.println(k + " : " + v));
+    }
 }
 class Graph{
     Map<String, NameNode> nodeMap = new HashMap<>();
@@ -32,7 +57,7 @@ class Graph{
         for (Map.Entry<String, NameNode> entry : entries) {
             NameNode node = entry.getValue();
             if(! node.visited){
-                __dfs(node);
+                node.frequency=__dfs(node);
             }
         }
         return nodeMap;
@@ -43,6 +68,7 @@ class Graph{
         if(! node.visited){
             node.visited = true;
             for (NameNode adjacent : node.adjacents) {
+                adjacent.names.add(node.name);
                 frequency+=__dfs(adjacent);
             }
         }else{
@@ -54,6 +80,7 @@ class Graph{
 class NameNode{
     String name;
     List<NameNode> adjacents = new ArrayList<>();
+    Set<String> names = new HashSet<>();
     HashMap<String , NameNode> map = new HashMap<>();
     boolean visited = false;
     int frequency = 0;
@@ -61,10 +88,21 @@ class NameNode{
     public NameNode(String name, Integer frequency){
         this.name = name;
         this.frequency = frequency;
+        this.names.add(name);
+    }
+
+    @Override
+    public String toString() {
+        return "NameNode{" +
+                "name='" + name + '\'' +
+                ", names=" + names +
+                ", frequency=" + frequency +
+                '}';
     }
 
     public void addNeighbor(NameNode neighbor){
         this.adjacents.add(neighbor);
+        names.add(neighbor.name);
         map.put(neighbor.name, neighbor);
     }
 }
