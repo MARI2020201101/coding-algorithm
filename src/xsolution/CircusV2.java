@@ -1,10 +1,24 @@
 package xsolution;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class CircusV2 {
+    public static void main(String[] args) {
+        List<WeightHeight> array = new ArrayList<>();
+        array.add(new WeightHeight(65,100));
+        array.add(new WeightHeight(70,150));
+        array.add(new WeightHeight(56,90));
+        array.add(new WeightHeight(75,190));
+        array.add(new WeightHeight(60,95));
+        array.add(new WeightHeight(68,110));
+
+        List<WeightHeight> maxSequence = maxSequence(array);
+        maxSequence.forEach(System.out::println);
+    }
     static List<WeightHeight> maxSequence(List<WeightHeight> array){
+        Collections.sort(array);
         List<WeightHeight>[] solutions = new List[array.size()];
         for (int i = 0; i < array.size(); i++) {
             solutions[i] = new ArrayList<>();
@@ -25,7 +39,7 @@ class CircusV2 {
             if(canAppend(sequence, target)){
                 ArrayList<WeightHeight> solution = new ArrayList<>(sequence);
                 solution.add(target);
-                maxSequence = max(maxSequence, solution);
+                maxSequence = new ArrayList<>(max(maxSequence, solution));
             }
         }
         return maxSequence;
