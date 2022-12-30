@@ -10,9 +10,9 @@ class FindNameSets {
     String[][] equipNames = {};
     static Map<String, NameSet> findNameSets(Map<String, NameSet> map, String[][] equipNames){
         Map<String , NameSet> result = new HashMap<>();
-        for (int i = 0; i < equipNames.length; i++) {
-            String name1 = equipNames[i][0];
-            String name2 = equipNames[i][1];
+        for (int i = 0; i < equipNames[0].length; i++) {
+            String name1 = equipNames[0][i];
+            String name2 = equipNames[1][i];
 
             NameSet nameSet1 = map.get(name1);
             NameSet nameSet2 = map.get(name2);
@@ -20,11 +20,13 @@ class FindNameSets {
             NameSet bigger = nameSet1.equipNames.size() >  nameSet2.equipNames.size() ? nameSet1 : nameSet2;
             NameSet smaller = bigger == nameSet1 ? nameSet2 : nameSet1;
             bigger.integrateNames(smaller);
-
-        }
+            smaller.integrateNames(bigger);
+            result.put(bigger.rootName, bigger);
+            }
+        return result;
         }
     }
-}
+
 
 class NameSet {
     String rootName;
