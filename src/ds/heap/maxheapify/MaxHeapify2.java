@@ -30,10 +30,10 @@ class MaxHeapify2 {
         if(largest != arr[parent]){
             if(largest == arr[leftChildIdx]){
                 swap(arr, parent, leftChildIdx);
-                __maxHeapify(arr, parent+1);
+                __maxHeapify(arr, leftChildIdx);
             }else{
                 swap(arr, parent, rightChildIdx);
-                __maxHeapify(arr, parent+1);
+                __maxHeapify(arr, rightChildIdx);
             }
         }
 
