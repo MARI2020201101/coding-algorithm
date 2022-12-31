@@ -1,4 +1,4 @@
-package xsolution;
+package xsolution.search;
 
 class SelectEqualsOrSmaller {
     static int selectEqualsOrSmaller(int[] arr, int k){

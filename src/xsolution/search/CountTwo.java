@@ -1,4 +1,4 @@
-package xsolution;
+package xsolution.search;
 
 class CountTwo {
     public static void main(String[] args) {
