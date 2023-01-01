@@ -1,4 +1,4 @@
-package xsolution;
+package xsolution.search;
 
 class FindSquare {
     SubSquare findSquare(int[][] matrix){

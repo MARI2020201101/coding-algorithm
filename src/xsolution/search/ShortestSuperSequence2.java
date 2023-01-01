@@ -1,4 +1,4 @@
-package xsolution;
+package xsolution.search;
 
 import java.util.*;
 
