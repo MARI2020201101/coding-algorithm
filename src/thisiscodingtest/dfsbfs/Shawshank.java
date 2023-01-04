@@ -18,18 +18,17 @@ class Shawshank {
         Queue<Point> queue = new LinkedList<>();
         queue.add(new Point(startX, startY, maze[startX][startY]));
         while(! queue.isEmpty()){
-        Point node = queue.poll();
-        if(node.x == maze.length-1 && node.y == maze[0].length-1){
-            System.out.println(node.val);
-        }
+            Point node = queue.poll();
+            if(node.x == maze.length-1 && node.y == maze[0].length-1){
+                System.out.println(node.val);
+            }
 
-        if(canGo(maze, node.x, node.y, node.x+1, node.y)){
-
-            queue.add(new Point(node.x+1 , node.y, node.val+1));
-        }
-        if(canGo(maze, node.x, node.y, node.x, node.y+1)){
-            queue.add(new Point(node.x , node.y+1, node.val+1));
-        }
+            if(canGo(maze, node.x, node.y, node.x+1, node.y)){
+                queue.add(new Point(node.x+1 , node.y, node.val+1));
+            }
+            if(canGo(maze, node.x, node.y, node.x, node.y+1)){
+                queue.add(new Point(node.x , node.y+1, node.val+1));
+            }
         }
         return 0;
     }

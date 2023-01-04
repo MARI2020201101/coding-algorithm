@@ -39,7 +39,14 @@ class Node{
 
     public Node() {
     }
-
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
     public Node(int data, Node left, Node right) {
         this.data = data;
         this.left = left;
