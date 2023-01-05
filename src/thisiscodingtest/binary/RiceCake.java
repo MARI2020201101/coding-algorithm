@@ -14,7 +14,6 @@ class RiceCake {
         return binarySearch(riceCakes, targetLength);
     }
 
-
     static int checkLength(int[] riceCakes, int cutLen){
         int total = 0;
         for (int i = 0; i < riceCakes.length; i++) {
