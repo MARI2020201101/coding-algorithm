@@ -57,15 +57,12 @@ class GetExteriorNode {
 
     private static List<Node> getLeftExteriorNode(Node node, boolean isBoundary) {
         List<Node> nodes = new LinkedList<>();
-        if(node == null){
-            return nodes;
-        }
-        else if(isBoundary || isLeafNode(node)){
+        if(node != null && (isBoundary || isLeafNode(node))){
             nodes.add(node);
             return nodes;
         }
         List<Node> leftExteriors = getLeftExteriorNode(node.left, isBoundary);
-        List<Node> rightExteriors = getLeftExteriorNode(node.right, node.left == null);
+        List<Node> rightExteriors = getLeftExteriorNode(node.right, isBoundary&&node.left == null);
         nodes.addAll(leftExteriors);
         nodes.addAll(rightExteriors);
         return nodes;
@@ -73,14 +70,11 @@ class GetExteriorNode {
     }
     private static List<Node> getRightExteriorNode(Node node, boolean isBoundary) {
         List<Node> nodes = new LinkedList<>();
-        if(node == null){
-            return nodes;
-        }
-        else if(isBoundary || isLeafNode(node)){
+        if(node != null && (isBoundary || isLeafNode(node))){
             nodes.add(node);
             return nodes;
         }
-        List<Node> leftExteriors = getRightExteriorNode(node.left, node.right == null);
+        List<Node> leftExteriors = getRightExteriorNode(node.left, isBoundary&& node.right == null);
         List<Node> rightExteriors = getRightExteriorNode(node.right, isBoundary);
         nodes.addAll(leftExteriors);
         nodes.addAll(rightExteriors);
