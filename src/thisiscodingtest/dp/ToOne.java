@@ -10,7 +10,7 @@ class ToOne {
             dp[i] = Integer.MAX_VALUE;
         }
         dp[n] = 1;
-        for (int i = dp.length-2; i >=1 ; i++) {
+        for (int i = dp.length-2; i >=1 ; i--) {
             if(i%5==0){
                 dp[i/5] = Math.min(dp[i]+1, dp[i/5]);
             }
@@ -20,9 +20,9 @@ class ToOne {
             if(i%2==0){
                 dp[i/2] = Math.min(dp[i]+1, dp[i/2]);
             }
-            else{
-                dp[i-1] = Math.min(dp[i]+1, dp[i-1]);
-            }
+
+            dp[i-1] = Math.min(dp[i]+1, dp[i-1]);
+
 
         }
         return dp[1];
