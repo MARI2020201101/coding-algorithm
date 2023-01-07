@@ -1,4 +1,4 @@
-package search;
+package search.essential;
 
 class IntersectRectangle {
     static Rectangle intersectRectangle(Rectangle r1, Rectangle r2){

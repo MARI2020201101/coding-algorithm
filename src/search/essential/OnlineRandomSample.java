@@ -1,4 +1,4 @@
-package search;
+package search.essential;
 
 import java.util.ArrayList;
 import java.util.Iterator;
