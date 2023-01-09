@@ -11,6 +11,7 @@ class ToOne {
         }
         dp[n] = 1;
         for (int i = dp.length-2; i >=1 ; i--) {
+
             if(i%5==0){
                 dp[i/5] = Math.min(dp[i]+1, dp[i/5]);
             }
