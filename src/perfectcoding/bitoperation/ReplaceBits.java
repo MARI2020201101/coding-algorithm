@@ -3,6 +3,7 @@ package perfectcoding.bitoperation;
 class ReplaceBits {
     public static void main(String[] args) {
         System.out.println(sequence(339809));
+        System.out.println(next(124376));
     }
     static int replace(int p, int q, int i, int j){
         int mask = (-1 << (j+1)) | ((1 << i) - 1);
@@ -27,5 +28,35 @@ class ReplaceBits {
             x>>>=1;
         }
         return maxCount;
+    }
+    static int next(int n){
+        int x = n;
+        int zeros = 0;
+        int ones = 0;
+        while(x != 0 && (x&1) == 0){
+            zeros++;
+            x>>>=1;
+        }
+        while((x&1)==1){
+            ones++;
+            x>>>=1;
+        }
+        int flipPoint = zeros + ones;
+        int flip = 1 << flipPoint;
+        n|=flip;
+        n &=(-1<<flipPoint);
+        n |= ((1 << ones) - 1);
+        return n;
+    }
+    static int count(int p, int q){
+        int count = 0;
+        int xor = p ^ q;
+        while(xor!=0){
+            if(xor==1){
+                count++;
+                xor>>=1;
+            }
+        }
+        return count;
     }
 }
