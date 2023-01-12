@@ -59,4 +59,10 @@ class ReplaceBits {
         }
         return count;
     }
+
+    static int rotate(int n, int k){
+        int fallBits = n << k;
+        int fallBitsShiftToRight = n >> (31-k);
+        return fallBits | fallBitsShiftToRight;
+    }
 }
