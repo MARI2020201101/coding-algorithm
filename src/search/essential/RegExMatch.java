@@ -25,5 +25,6 @@ class RegExMatch {
         if(!str.isEmpty() && (regex.charAt(0)=='.' || regex.charAt(0) == str.charAt(0))){
             return __isMatch(regex.substring(1), str.substring(1));
         }
+        return false;
     }
 }
