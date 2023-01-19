@@ -5,7 +5,9 @@ class IsSubTree {
         Node root = new Node(1, new Node(2, new Node(4), new Node(5))
                 , new Node(3, new Node(6), new Node(7)));
         Node another = new Node(2, new Node(4), new Node(5));
+        Node another2 = new Node(2, new Node(4), new Node(6));
         System.out.println(isSubTree(root, another));
+        System.out.println(isSubTree(root, another2));
     }
     static boolean isSubTree(Node node, Node another){
         if(node == null && another == null){
